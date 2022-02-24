@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Visitor Management Form</title>
+    <meta name="viewport" content="width=500px, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./static/style.css">
+    <script src="./static/webjava.js"></script>
+    <script src="./static/imageLib.js"></script>
+
+</head>
+
+<body>
+    <div class="main-block">
+        <div class="left-part">
+            <i class="fa fa-book" style="font-size: 50px;;"></i>
+            <h1>Visitor Management Form</h1>
+        </div>
+        <form id="form-sub" class="form-style" action="/" method="post">
+            <div class="title">
+                <h2>Register here</h2>
+            </div>
+            <div class="info">
+                <div id="pic"><input id="inp-no-bdr" type="file" accept="image/*" capture="camera" onchange="funchange()">
+                    <label id="popu"></label>
+                    <label for="inp-no-bdr" class="modal-label">Capture Image</label>
+                </div>
+                <input class="fname" type="text" id="name" name="name" placeholder="Full name(Max 15 Char)">
+                <input type="number" id="age" name="age" placeholder="Age">
+                <input type="number" id="phone" name="phone" placeholder="Phone number">
+                <input type="text" id="email" name="email" placeholder="Email">
+                <input type="text" id="add" name="add" placeholder="Address">
+                <select id="gender" name="gender">
+                    <option value="Male" selected>Male</option>
+                    <option value="Female">Female</option>
+
+                </select>
+            </div>
+            <input id="sub_but_id" type="submit" onclick="check()">
+        </form>
+    </div>
+</body>
+
+</html>

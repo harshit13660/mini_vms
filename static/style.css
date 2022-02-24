@@ -1,0 +1,229 @@
+
+
+html,
+        body {
+            min-height: 100%;
+        }
+
+        body,
+        div,
+        form,
+        input,
+        select,
+        p {
+            padding: 0;
+            margin: 0;
+            outline: none;
+            font-family: Roboto, Arial, sans-serif;
+            font-size: 16px;
+            color: #eee;
+        }
+
+        body {
+            background-color: #6b6969;
+            background-size: cover;
+        }
+
+        h1,
+        h2 {
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size:x-large;
+        }
+
+        h2 {
+            margin: 0 0 0 8px;
+        }
+
+        .main-block {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            padding: 25px;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .left-part,
+        form {
+            padding: 40px;
+
+        }
+
+        .left-part {
+            text-align: center;
+            padding: 15px;
+        }
+
+        .fa-graduation-cap {
+            font-size: 72px;
+        }
+
+        form {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .title {
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .info {
+            display: flex;
+            flex-direction: column;
+            width: 400px;
+        }
+
+        input,
+        select {
+            padding: 5px;
+            margin-bottom: 30px;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #eee;
+        }
+
+        input::placeholder {
+            color: #eee;
+        }
+
+        option:focus {
+            border: none;
+        }
+
+        option {
+            background: black;
+            border: none;
+        }
+
+        .checkbox input {
+            margin: 0 10px 0 0;
+            vertical-align: middle;
+        }
+
+        .checkbox a {
+            color: #26a9e0;
+        }
+
+        .checkbox a:hover {
+            color: #85d6de;
+        }
+
+        #sub_but_id {
+            display: block;
+            width:100px;
+            margin:auto;
+            padding: 10px 5px;
+            margin-top: 20px;
+            border-radius: 5px;
+            border: none;
+            background: #26a9e0;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 400;
+            color: #fff;
+        }
+
+
+        button {
+            width: 100%;
+        }
+
+        button:hover,
+        .btn-item:hover {
+            background: #85d6de;
+        }
+
+        @media (min-width: 200px) {
+
+            html,
+            body {
+                height: 100%;
+            }
+
+            .main-block {
+                flex-direction: column;
+                height: 100vh;
+            }
+
+        }
+
+        .form-style {
+            background-color: #545454;
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+
+        #pic {
+            display: block;
+            width:120px;
+            height:100px;
+            margin: auto;
+            
+        }
+
+        input[type='file'] {
+        color:transparent;  
+        }
+
+        #inp-no-bdr{
+            border-bottom: none;
+            visibility: hidden;
+        }
+        .modal-label{
+            display: block;
+            position: relative;
+            bottom: 52%;
+            background-color: #e0dada;
+            color:black;
+            padding: 4px;
+            margin-bottom: 100px;
+        }
+
+        .modal-label:hover {
+        border-color: white;
+        }
+
+        #popu{
+            display: block;
+            color:white;
+            width:70px;
+            margin:auto;
+        }
+
+        #download-img{
+            display:block;
+            font-size:larger;
+            font-weight: 400;
+            background-color: white;
+            color:black;
+            padding: 10px;
+            text-decoration: none;
+            margin:10px;
+
+        }
+
+        #download-img:hover{
+            background-color: rgb(143, 214, 241);
+        }
+
+        #form-sub{
+            padding:15px;
+        }
+        @media screen and (min-width: 700px) {
+            #img_card{
+                width:700px;
+                height:400px;
+            }
+        }
