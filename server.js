@@ -2,6 +2,7 @@
 const mongo=require("mongoose");
 const express= require('express');
 const path=require("path");
+const port=process.env.PORT || 8000;
 
 const DB="mongodb+srv://Firstmongo:miniMongovms@cluster0.sshwd.mongodb.net/Mini_VMS_data?retryWrites=true&w=majority"
 
@@ -41,6 +42,6 @@ app.post('/',(req,res)=>{
 })
 
 
-app.listen(5050,()=>{
+app.listen(port,()=>{
     console.log("Server startde on port 5050");
 });

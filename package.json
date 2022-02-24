@@ -1,4 +1,6 @@
-{
+{ "scripts": {
+    "start": "node server.js"
+},
   "dependencies": {
     "express": "^4.17.3",
     "jimp": "^0.16.1",
