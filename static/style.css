@@ -205,12 +205,11 @@ html,
         #download-img{
             display:block;
             font-size:larger;
-            font-weight: 400;
             background-color: white;
             color:black;
             padding: 10px;
             text-decoration: none;
-            margin:10px;
+            text-align: center;
 
         }
 

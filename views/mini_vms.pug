@@ -10,6 +10,7 @@
     <script src="./static/webjava.js"></script>
     <script src="./static/imageLib.js"></script>
 
+
 </head>
 
 <body>
@@ -27,6 +28,7 @@
                     <label id="popu"></label>
                     <label for="inp-no-bdr" class="modal-label">Capture Image</label>
                 </div>
+                <input id="userImg" type="hidden" name="Image">
                 <input class="fname" type="text" id="name" name="name" placeholder="Full name(Max 15 Char)">
                 <input type="number" id="age" name="age" placeholder="Age">
                 <input type="number" id="phone" name="phone" placeholder="Phone number">
@@ -38,7 +40,7 @@
 
                 </select>
             </div>
-            <input id="sub_but_id" type="submit" onclick="check()">
+            <input id="sub_but_id" type="button" value="Submit" onclick="check()">
         </form>
     </div>
 </body>

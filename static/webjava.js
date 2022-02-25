@@ -3,49 +3,68 @@ let uplo = "None";
 
 var Jimp=window.Jimp;
 
+var base64String="";
+var resized_img;
 
-let base64String = "";
 
-async function textOverlay(u_name,u_gender,u_age,u_email,u_phone,u_add) {
-   // Reading image
+async function reduce_image_file_size(base64Str, MAX_WIDTH = 319, MAX_HEIGHT = 400) {
+   let resized_base64 = await new Promise((resolve) => {
+       let img = new Image()
+       img.src = base64Str
+       img.onload = () => {
+           let canvas = document.createElement('canvas')
+           let width = img.width
+           let height = img.height
 
-   var reader = new FileReader();
-   reader.onload = function () {base64String = reader.result.replace("data:image/jpeg;base64,", "")};
-   reader.readAsDataURL(document.getElementById("inp-no-bdr").files[0]);
-   const image = await Jimp.read('./static/card.png');
-   const per_image = await Jimp.read(base64String);
-   per_image.resize(319,400);
-   // Defining the text font
-   const fontb = await Jimp.loadFont("./static/fonts/basefont.fnt");
-   const fontm = await Jimp.loadFont("./static/fonts/basemedium.fnt");
-   const fontnum = await Jimp.loadFont("./static/fonts/numeric_font.fnt");
-   const fonts = await Jimp.loadFont("./static/fonts/small_font.fnt");
-   
-   image.print(fontb, 638, 237, u_name);
-   image.print(fontm, 638, 320, u_gender);
-   image.print(fontnum, 800, 320, u_age);
-   image.print(fonts, 700, 380, u_email);
-   image.print(fonts, 700, 437, u_phone);
-   image.print(fonts, 700, 493, u_add );
-   image.composite(per_image,200,200);
-   image.getBase64(Jimp.AUTO, function(err, data) {
-      document.getElementById("form-sub").innerHTML=`<div><img id="img_card" src=${data} style='display:block;' width='500' height='300'/><center><a id='download-img' href=${data} download onclick='thankYou()'>Download</a></center></div>`;
-      window.stop();
-});
+           if (width > height) {
+               if (width > MAX_WIDTH) {
+                   height *= MAX_WIDTH / width
+                   width = MAX_WIDTH
+               }
+           } else {
+               if (height > MAX_HEIGHT) {
+                   width *= MAX_HEIGHT / height
+                   height = MAX_HEIGHT
+               }
+           }
+           canvas.width = width
+           canvas.height = height
+           let ctx = canvas.getContext('2d')
+           ctx.drawImage(img, 0, 0, width, height)
+           resolve(canvas.toDataURL()) // this will return base64 image results after resize
+       }
+   });
+   return resized_base64;
 }
 
+function calc_image_size(image) {
+   let y = 1;
+   if (image.endsWith('==')) {
+       y = 2
+   }
+   const x_size = (image.length * (3 / 4)) - y
+   return Math.round(x_size / 1024)
+}
 
-function funchange() {
-   console.log(document.getElementById("inp-no-bdr").value)
+async function funchange() {
    uplo = document.getElementById("popu").innerHTML = "Uploaded";
-   console.log(uplo);
+   var reader = new FileReader();
+   reader.onload = async function () {
+      base64String = reader.result
 
+      base64String=await reduce_image_file_size(base64String)
+
+      document.getElementById("userImg").value=base64String;
+
+         
+   };
+   reader.readAsDataURL(document.getElementById("inp-no-bdr").files[0]);
 }
-
 
  function check() {
    if ((uplo == "Uploaded") && (document.getElementById("name").value != "") && (document.getElementById("age").value.length <= 2 && document.getElementById("age").value !="")  && (document.getElementById("phone").value).length >= 10 && (document.getElementById("email").value.includes("@gmail.com")) && (document.getElementById("add").value != "")) {
-      textOverlay(document.getElementById("name").value.toUpperCase(),document.getElementById("gender").value,document.getElementById("age").value,document.getElementById("email").value,document.getElementById("phone").value,document.getElementById("add").value);
+      document.getElementById("form-sub").submit();
+
    }
    else{
        alert("Please Enter Valid Details!!")
