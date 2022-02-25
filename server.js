@@ -43,7 +43,7 @@ app.get('/',(req,res)=>{
 
 app.post('/',(req,res)=>{
 
-    if(req.body.name!="" && req.body.age<100 && req.body.phone.length<=10 && req.body.email.includes("@gmail.com") && req.body.add.length<20){
+    if(req.body.name!="" && req.body.age<100 && req.body.phone.length<=10 && req.body.email.includes("@gmail.com") && req.body.add.length!=""){
         async function textOverlay() {
             // Reading image
             var take=(req.body.Image).replace("data:image/png;base64,","")
@@ -64,7 +64,7 @@ app.post('/',(req,res)=>{
             image.print(fontnum, 800, 320, req.body.age);
             image.print(fonts, 700, 380, req.body.email);
             image.print(fonts, 700, 437, req.body.phone);
-            image.print(fonts, 700, 493, req.body.add);
+            image.print(fonts, 700, 493, (req.body.add).substring(0, 40));
             image.composite(per_image,200,200);
             image.getBase64(Jimp.AUTO, function(err, data){
                  res.status('200').render("mini_card.pug",{card_img:data});
